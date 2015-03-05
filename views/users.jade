@@ -5,8 +5,13 @@ block content
 	p Welcome to #{title}, how gorgeous!
 	p
 		| You can visit my 
-		a(href="/newuser") New User
+		a(href="/users/newuser") New User
 		|  page.
+	if errormessage
+		p(style="color:red")=errormessage
+	if successmessage
+		p(style="color:green")=successmessage
+	
 	table
 		each user, i in userlist
 			tr
