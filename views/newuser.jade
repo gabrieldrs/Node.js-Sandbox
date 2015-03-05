@@ -1,0 +1,11 @@
+extends layout
+
+block content
+	h1= title
+	p Welcome to #{title}, would you like to draw a new character on the sand?
+	h2 You can specify some attributes here:
+	form#formAddUser(name="userform", method="post",action="/adduser")
+		input#userName(type="text", placeholder="An interesting name...", name="name")
+		input#userEmail(type="text", placeholder="where@re.you ?", name="email")
+		input#userPassword(type="password", placeholder="This should be a secret!", name="password")
+		button#submit(type="submit") Memorize!
