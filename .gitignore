@@ -1,8 +1,8 @@
 # Node Modules
-node_modules/
+node_modules
 
 # WebStorm files
-.idea/
+.idea
 
 # MongoDB storage files
-# data/
+data
