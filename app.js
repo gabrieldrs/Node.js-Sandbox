@@ -6,19 +6,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-/* OLD MONGODB HANDLER
-// mongoDB stuff: Monk
-var mongo = require('mongodb');
-var monk = require('monk');
-var db = monk('localhost:27017/sandbox');
-*/
 // mongoDB stuff: Mongoose
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/sandbox');
 
 // defining routes -> direct traffic
-var routes = require('./routes/index');
-var users = require('./routes/users');
+var rootRoute = require('./routes/index');
+var usersRoute = require('./routes/users');
 
 // define app as a variable to hold express module
 var app = express();
@@ -27,23 +21,12 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-/* OLD mongoDB STUFF, USED ONLY FOR MONK
-   more mongoDB related stuff, this one is a middleware to define the
- * database to be used in all requests
-
-app.use(function(req,res,next){
-    req.db = db;
-    next();
-});
-*/
 
 /*
 * If path part of the URL is '/', node will use the route "routes"
@@ -53,8 +36,8 @@ app.use(function(req,res,next){
 *      http://localhost:3000/hue -> use routes
 *      http://localhost:3000/users/hue -> use users
 */
-app.use('/', routes);
-app.use('/users', users);
+app.use('/', rootRoute);
+app.use('/users', usersRoute);
 
 
 // catch 404 and forward to error handler
