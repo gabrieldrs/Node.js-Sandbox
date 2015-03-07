@@ -15,6 +15,7 @@ I've used this content as reference to build what you see here:
 - this [Node.js tutorial]: It introduces mongoDB and is a good way to put in practice all the concepts.
 - The [Mongoose QuickStart] Guide: It introduces Mongoose in general.
 - This [GitHub Repo]: It shows how to implement mongoose in express, it's REALLY old, but I could manage to adapt it to the current version of express (really helpful).
+- This [MongoDB Quick Reference]: It helps when I need to manually check something in the database.
 
 If you want to see some more of my work, you can always visit my [portfolio].
 
@@ -24,3 +25,4 @@ If you want to see some more of my work, you can always visit my [portfolio].
 [portfolio]:http://gabriel.sezefredo.com.br
 [Mongoose QuickStart]:http://mongoosejs.com/docs/
 [GitHub Repo]:https://gist.github.com/fwielstra/1025038
+[MongoDB Quick Reference]:http://docs.mongodb.org/manual/reference/mongo-shell/
