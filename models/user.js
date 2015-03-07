@@ -5,7 +5,7 @@ var userSchema = new Schema({
     username :  String,
     password :  String,
     email :     String
-});
+}, { collection: 'usercollection' });
 
 userSchema.methods.getInfo = function(){
     var name = this.username;
