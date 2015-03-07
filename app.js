@@ -6,10 +6,15 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-// mongoDB stuff
+/* OLD MONGODB HANDLER
+// mongoDB stuff: Monk
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/sandbox');
+*/
+// mongoDB stuff: Mongoose
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/sandbox');
 
 // defining routes -> direct traffic
 var routes = require('./routes/index');
@@ -30,13 +35,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-/* more mongoDB related stuff, this one is a middleware to define the
+/* OLD mongoDB STUFF, USED ONLY FOR MONK
+   more mongoDB related stuff, this one is a middleware to define the
  * database to be used in all requests
-*/
+
 app.use(function(req,res,next){
     req.db = db;
     next();
 });
+*/
 
 /*
 * If path part of the URL is '/', node will use the route "routes"
